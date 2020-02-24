@@ -1,5 +1,5 @@
 /*
-    Three column layout example.
+    Standard web page(Holy Grail) layout which has multiple, equal height columns.
     by Ali A. (doubleInc@github)
 
     Note: Classes used so they can be easily interchanged in HTML file instead of
@@ -46,8 +46,49 @@
   flex-grow: 4;
 }
 
-/*  Responsive mode not required.
+.main-content {
+  /* Step 4. Set contents of <main> to display as flex layout. */
+  display: flex;
+}
+
+/* Step 5. The two classes left and right are to line up the aside on the left or right.
+
+    Flex-basis is set to 200px and can be adjusted as the previous example.
+
+    <aside> is given the class of 'right' and <article> with 'flex-item', allowing it 
+    to fill the space since 'left' and 'right' are set to flex-grow 0.
 */
+.left,
+.right {
+  /* The 200px is he initial main size of a flex item, flex-basis. It sets the size of the content 
+  box unless otherwise set with box-sizing. */
+  flex: 0 0 200px;
+}
+
+.left {
+  /* Step 6. Set order so that 'left' aligns goes in first. Not used in this example, but needed 
+  if all 3 columns are used. */
+  order: -1;
+}
+
+/*  Step 7.
+    Responsive mode which just stacks all elements.
+*/
+
+@media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+    flex: 1;
+  }
+  .main-content {
+    flex: 4;
+    flex-direction: column;
+  }
+  .left,
+  .right {
+    flex: 0 0 200px;
+  }
+}
 
 /*===================================================================
 Non flexbox related styling. Only for better visibilty. 
