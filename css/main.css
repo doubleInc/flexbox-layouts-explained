@@ -1,5 +1,5 @@
 /*
-    Navbar with flex example
+    Navbar with flex example (Navbar with last item pushed right to the edge.)
     by Ali A. (doubleInc@github)
 
     Note: Classes used so they can be easily interchanged in HTML file instead of
@@ -36,14 +36,30 @@
   flex-grow: 1;
 }
 
-/*  Step 3. Responsive mode. 
-    Make items stack on a mobile device by changing flex-direction to 'column'. 
+.flex-item-3 {
+  /* Step 3. Grow last item larger than the remaining ones. Give it more room.  
+  */
+  flex-grow: 3;
+}
+
+.flex-last-item {
+  /* Step 4. Align the text on the last elemnt to the right. */
+  text-align: right;
+}
+
+/*  Step 5. Responsive mode. 
+    Make items stack on a mobile device by changing flex-direction to 'column'.
+    
+    Reset last item to be aligned in the center like rest of the elements.
 */
 @media only screen and (max-device-width: 736px) {
   .flex-container {
     flex-direction: column;
 
     /*Extra styling to align text in the center.*/
+    text-align: center;
+  }
+  .flex-last-item {
     text-align: center;
   }
 }
