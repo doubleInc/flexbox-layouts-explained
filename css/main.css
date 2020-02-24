@@ -1,5 +1,5 @@
 /*
-    Standard web page(Holy Grail) layout which has multiple, equal height columns.
+    Bonus stage: 3 x 3 grid (Responsive)
     by Ali A. (doubleInc@github)
 
     Note: Classes used so they can be easily interchanged in HTML file instead of
@@ -18,76 +18,26 @@
   This causes all DIRECT children to become flex items.  */
   display: flex;
 
-  /* Set the direction of child elements to column. */
-  flex-direction: column;
-
-  /* Give the container a height value. I used 'vh', relative to 1% of the height 
-  of the viewport in use. So in this example, 100vh takes up all the viewing screens height. 
-  
-  Note: In the vertical direction you need to specify a height for the container. This is 
-  different from the horizontal direction, which automatically expands to fit.*/
-  min-height: 100vh;
+  /* Wrap forces items onto multiple lines. Remember default flex-direction is row so 
+  it's ommited. */
+  flex-wrap: wrap;
+  /* Items are distributed/spaced evenly along the axis.*/
+  justify-content: space-between;
 }
 
 .flex-item {
-  /* Step 2. Spacing direct children elements.
+  /* Step 2. 
+    
+    Each child is given the same flex-basis 32%, space to take up along the axis.
 
-   In this example, <header> and <footer> are given the same space within the parent
-   container. 
-   
-   Realisticly, we wouldnt assign these to the <header> and <footer>, leaving them blank
-   and only assigning it to the <main> element because the content is often unkown.*/
-  flex-grow: 1;
-}
+    Bottom margin of 2% to even out display, to equal the vertical gap.
+    (100% - 32x3 = 4/2 = 2)
+  */
+  flex: 0 32%;
+  margin-bottom: 2%;
 
-.flex-item-4 {
-  /* Step 3. Grow middle colomn larger than the remaining ones. Give it more room, 
-  this example sets the main column to 4. */
-  flex-grow: 4;
-}
-
-.main-content {
-  /* Step 4. Set contents of <main> to display as flex layout. */
-  display: flex;
-}
-
-/* Step 5. The two classes left and right are to line up the aside on the left or right.
-
-    Flex-basis is set to 200px and can be adjusted as the previous example.
-
-    <aside> is given the class of 'right' and <article> with 'flex-item', allowing it 
-    to fill the space since 'left' and 'right' are set to flex-grow 0.
-*/
-.left,
-.right {
-  /* The 200px is he initial main size of a flex item, flex-basis. It sets the size of the content 
-  box unless otherwise set with box-sizing. */
-  flex: 0 0 200px;
-}
-
-.left {
-  /* Step 6. Set order so that 'left' aligns goes in first. Not used in this example, but needed 
-  if all 3 columns are used. */
-  order: -1;
-}
-
-/*  Step 7.
-    Responsive mode which just stacks all elements.
-*/
-
-@media (max-width: 768px) {
-  .flex-container {
-    flex-direction: column;
-    flex: 1;
-  }
-  .main-content {
-    flex: 4;
-    flex-direction: column;
-  }
-  .left,
-  .right {
-    flex: 0 0 200px;
-  }
+  /* Height of each element for this example. Should be adjusted accordingly.*/
+  height: 160px;
 }
 
 /*===================================================================
