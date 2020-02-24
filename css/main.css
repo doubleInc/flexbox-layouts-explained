@@ -1,5 +1,5 @@
 /*
-    Navbar with flex example (Navbar with last item pushed right to the edge.)
+    Three column layout example.
     by Ali A. (doubleInc@github)
 
     Note: Classes used so they can be easily interchanged in HTML file instead of
@@ -13,65 +13,45 @@
 
 .flex-container {
   /* 
-  Step 1: The <ul> element is our flex container, set display on it to 'flex'.
+  Step 1: The <div> element is our flex container, set display on it to 'flex'.
 
-  This causes all DIRECT children to become flex items, the <li> in our case. These 
-  can be swapped out for <div> or <a>.
-  */
+  This causes all DIRECT children to become flex items.  */
   display: flex;
 
-  /* Optional: Set the direction of child element, how to line them up. If left out, 
-  defaults to 'row'. */
-  flex-direction: row;
+  /* Set the direction of child elements to column. */
+  flex-direction: column;
+
+  /* Give the container a height value. I used 'vh', relative to 1% of the height 
+  of the viewport in use. So in this example, 100vh takes up all the viewing screens height. 
+  
+  Note: In the vertical direction you need to specify a height for the container. This is 
+  different from the horizontal direction, which automatically expands to fit.*/
+  min-height: 100vh;
 }
 
 .flex-item {
   /* Step 2. Spacing direct children elements.
 
-  flex-grow: If all sibling items have the same flex grow value, then all 
-  items will receive the same share of remaining space, otherwise it is distributed 
-  according to the ratio defined by the different flex grow factors. 
-  
-  In this case all items are given the same space within their parent container.*/
+   In this example, <header> and <footer> are given the same space within the parent
+   container. 
+   
+   Realisticly, we wouldnt assign these to the <header> and <footer>, leaving them blank
+   and only assigning it to the <main> element because the content is often unkown.*/
   flex-grow: 1;
 }
 
-.flex-item-3 {
-  /* Step 3. Grow last item larger than the remaining ones. Give it more room.  
-  */
-  flex-grow: 3;
+.flex-item-4 {
+  /* Step 3. Grow middle colomn larger than the remaining ones. Give it more room, 
+  this example sets the main column to 4. */
+  flex-grow: 4;
 }
 
-.flex-last-item {
-  /* Step 4. Align the text on the last elemnt to the right. */
-  text-align: right;
-}
-
-/*  Step 5. Responsive mode. 
-    Make items stack on a mobile device by changing flex-direction to 'column'.
-    
-    Reset last item to be aligned in the center like rest of the elements.
+/*  Responsive mode not required.
 */
-@media only screen and (max-device-width: 736px) {
-  .flex-container {
-    flex-direction: column;
-
-    /*Extra styling to align text in the center.*/
-    text-align: center;
-  }
-  .flex-last-item {
-    text-align: center;
-  }
-}
 
 /*===================================================================
 Non flexbox related styling. Only for better visibilty. 
 =====================================================================*/
-
-nav li {
-  /* remove styling from <li> */
-  list-style: none;
-}
 
 .border-purple {
   border: 1px solid purple;
